@@ -1,0 +1,17 @@
+// Cloudflare Workers の設定ファイル(静的サイト配信)
+// デプロイ手順は SPEC.md の「デプロイ」を参照
+{
+  "name": "utalpha",
+  "compatibility_date": "2026-07-09",
+  "assets": {
+    "directory": "./public",
+    // /about/index.html ↔ /about/ を自動でそろえる
+    "html_handling": "auto-trailing-slash"
+  }
+
+  // ドメイン取得後に有効化する(utalpha.com をこの Worker に割り当てる):
+  // "routes": [
+  //   { "pattern": "utalpha.com", "custom_domain": true },
+  //   { "pattern": "www.utalpha.com", "custom_domain": true }
+  // ]
+}

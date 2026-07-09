@@ -50,6 +50,18 @@
 - 活動写真はポラロイド風(白フチ+マスキングテープ+少し傾ける)で並べる。テープの色だけはロゴの色を使う
 - 画像ファイル名は半角英数字(例: `event-0621-soccer-1.jpg`)。日本語ファイル名は入れたらリネームする
 
+## デプロイ
+
+設定は `wrangler.jsonc` に準備済み(public/ を静的配信、Worker スクリプト不要の assets-only 構成)。回線が安定したら以下の順で進める:
+
+1. **Node.js をインストール**(未導入なら) — `winget install OpenJS.NodeJS.LTS`
+2. **Cloudflare アカウント作成/ログイン** — `npx wrangler login`(ブラウザが開く)
+3. **仮デプロイ** — `npx wrangler deploy` → `utalpha.<アカウント名>.workers.dev` で即公開される。ドメイン取得前の動作確認に使う
+4. **ドメイン取得(手動)** — Cloudflare ダッシュボード → Registrar で utalpha.com を購入(年間約1,600円)
+5. **カスタムドメイン割り当て** — wrangler.jsonc の routes のコメントを外して再デプロイ
+6. **Email Routing 設定(手動)** — ダッシュボードで contact@utalpha.com を作成し受信転送先を設定 → contact ページの仮アドレスを確認・必要なら差し替え
+7. 以降の更新は「編集 → git commit → `npx wrangler deploy`」
+
 ## 決定事項ログ
 
 - 2026-07-09: Cloudflare Workers + Registrar + Email Routing の構成に決定。ドメイン候補は utalpha.com
