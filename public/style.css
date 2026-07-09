@@ -123,6 +123,16 @@ a {
   object-position: 50% 60%;
 }
 
+/* PC ではヘッダー(64px)+ヒーローで画面1枚に収める。
+   足りない分は下(床・座っている子の足)からカットし、頭側は残す */
+@media (min-width: 801px) {
+  .hero-bg {
+    aspect-ratio: auto;
+    height: calc(100vh - 65px);
+    object-position: 50% 30%;
+  }
+}
+
 /* 写真の上に暗めのオーバーレイ */
 .hero::after {
   content: "";
