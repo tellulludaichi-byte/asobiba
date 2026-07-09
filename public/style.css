@@ -130,22 +130,25 @@ a:hover {
   transform: scaleX(1);
 }
 
-/* ヒーロー(トップページ):左テキスト・右写真の分割レイアウト */
+/* ヒーロー(トップページ):左テキスト・右写真、写真は画面右端まで */
 .hero {
   background: var(--bg);
   border-bottom: 1px solid var(--border);
+  overflow: hidden;
 }
 
 .hero-inner {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
   align-items: center;
-  max-width: 1160px;
-  margin: 0 auto;
 }
 
 .hero-copy {
-  padding: 56px 16px 56px 24px;
+  position: relative;
+  z-index: 1;
+  /* 左端は下のセクション(.container)と揃え、右は境目を越えて写真に重ねる */
+  padding: 56px 0 56px max(24px, calc((100vw - 960px) / 2 + 24px));
+  margin-right: -140px;
   animation: fade-up 0.7s ease both;
 }
 
@@ -169,9 +172,20 @@ a:hover {
 }
 
 .hero-photo {
+  position: relative;
   align-self: stretch;
-  min-height: 440px;
-  clip-path: polygon(13% 0, 100% 0, 100% 100%, 0 100%);
+  min-height: 460px;
+  clip-path: polygon(16% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* 境目付近を白くフェードさせて、重なった文字も読めるようにする */
+.hero-photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(100deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.45) 22%, transparent 48%);
+  pointer-events: none;
 }
 
 .hero-photo img {
@@ -188,6 +202,7 @@ a:hover {
 
   .hero-copy {
     padding: 44px 24px 36px;
+    margin-right: 0;
     text-align: center;
   }
 
@@ -195,6 +210,10 @@ a:hover {
     min-height: 0;
     height: 260px;
     clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .hero-photo::before {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, transparent 30%);
   }
 }
 
