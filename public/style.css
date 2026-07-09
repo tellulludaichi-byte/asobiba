@@ -23,13 +23,11 @@ body {
   line-height: 1.8;
 }
 
+/* リンク(踏めるところ)は常に下線を付ける */
 a {
   color: var(--text);
-  text-decoration: none;
-}
-
-a:hover {
   text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 :focus-visible {
@@ -60,6 +58,7 @@ a:hover {
   height: 64px;
 }
 
+/* ロゴ扱いのサイト名は下線なし */
 .brand {
   display: flex;
   align-items: center;
@@ -68,6 +67,7 @@ a:hover {
   font-weight: 700;
   color: var(--text);
   letter-spacing: 0.02em;
+  text-decoration: none;
 }
 
 .brand-logo {
@@ -90,35 +90,18 @@ a:hover {
 }
 
 .site-nav a {
-  position: relative;
   color: var(--text-muted);
   font-size: 0.95rem;
   padding: 4px 0;
 }
 
-.site-nav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -2px;
-  height: 2px;
-  border-radius: 2px;
-  background: var(--text);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.2s ease;
-}
-
 .site-nav a:hover,
 .site-nav a[aria-current="page"] {
   color: var(--text);
-  text-decoration: none;
 }
 
-.site-nav a:hover::after,
-.site-nav a[aria-current="page"]::after {
-  transform: scaleX(1);
+.site-nav a[aria-current="page"] {
+  font-weight: 700;
 }
 
 /* ヒーロー(トップページ):全面写真+中央白文字 */
@@ -189,6 +172,7 @@ a:hover {
   padding: 14px 40px;
   border-radius: 999px;
   font-weight: 600;
+  text-decoration: none;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
@@ -216,14 +200,6 @@ a:hover {
   margin-bottom: 28px;
 }
 
-.section h2::after {
-  content: "";
-  display: block;
-  width: 40px;
-  height: 3px;
-  margin-top: 10px;
-  background: var(--text);
-}
 
 /* カードグリッド */
 .card-grid {
@@ -445,12 +421,6 @@ a:hover {
 /* 本文 */
 .prose p + p {
   margin-top: 1em;
-}
-
-/* 本文中のリンクは黒+下線でリンクだと分かるようにする */
-.prose a {
-  text-decoration: underline;
-  text-underline-offset: 3px;
 }
 
 .prose dl {
