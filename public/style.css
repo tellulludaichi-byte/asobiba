@@ -53,9 +53,7 @@ a:hover {
   top: 0;
   z-index: 10;
   border-bottom: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: var(--bg);
 }
 
 /* ロゴの色を並べたリボン */
@@ -86,19 +84,15 @@ a:hover {
 .brand-logo {
   height: 36px;
   width: auto;
+  transition: transform 0.25s ease;
 }
 
 .brand:hover {
   text-decoration: none;
 }
 
-.brand .alpha {
-  display: inline-block;
-  transition: transform 0.25s ease;
-}
-
-.brand:hover .alpha {
-  transform: rotate(14deg) scale(1.15);
+.brand:hover .brand-logo {
+  transform: rotate(14deg) scale(1.1);
 }
 
 .site-nav {
@@ -143,7 +137,8 @@ a:hover {
   position: relative;
   min-height: 520px;
   display: flex;
-  align-items: center;
+  /* 見出しは下寄せ(中央だと写真の顔と被る) */
+  align-items: flex-end;
   justify-content: center;
   text-align: center;
   overflow: hidden;
@@ -169,7 +164,7 @@ a:hover {
 .hero-content {
   position: relative;
   z-index: 1;
-  padding: 72px 24px;
+  padding: 24px 24px 52px;
   animation: fade-up 0.7s ease both;
 }
 
@@ -295,6 +290,10 @@ a:hover {
   border-radius: var(--radius);
   padding: 28px;
   box-shadow: 0 2px 10px rgba(31, 36, 48, 0.04);
+}
+
+.event-card + .event-card {
+  margin-top: 24px;
 }
 
 .event-card h3 {

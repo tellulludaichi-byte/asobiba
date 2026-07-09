@@ -32,6 +32,7 @@
 - 素の HTML/CSS(フレームワーク・ビルドツールなし)
 - 静的ファイルは `public/` 配下に置く
 - 参加サークルのデータは `public/circles-data.js` に分離。1ブロック追加すればサークルが1つ増える
+- イベント告知と活動写真のデータは `public/events-data.js` に分離(UPCOMING_EVENTS と PAST_ACTIVITIES)。イベントが0件のときは「告知中のイベントはありません」を自動表示。終わったイベントは UPCOMING_EVENTS から消して PAST_ACTIVITIES へ移す運用
 - リンクは相対パス(ローカルでファイルを直接開いてプレビューできるようにするため)
 
 ## デザイン方針
