@@ -1,10 +1,10 @@
 /* utalpha.com 共通スタイル */
 
 :root {
-  --accent: #4f5df0;
-  --accent-dark: #3a46c4;
-  --accent-soft: #eef0fe;
-  --text: #1f2430;
+  --accent: #5b63d3;
+  --accent-dark: #454bb0;
+  --accent-soft: #eef0fb;
+  --text: #33363a; /* ロゴのチャコールに合わせる */
   --text-muted: #5f6675;
   --bg: #ffffff;
   --bg-alt: #f7f8fb;
@@ -56,6 +56,14 @@ a:hover {
   background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+}
+
+/* ロゴの色を並べたリボン */
+.site-header::before {
+  content: "";
+  display: block;
+  height: 4px;
+  background: linear-gradient(90deg, #6fc76f, #e0c94f, #c95c5c, #c76fd1, #5b63d3, #6fcfc4);
 }
 
 .site-header .container {
@@ -164,6 +172,14 @@ a:hover {
 .hero .container {
   position: relative;
   animation: fade-up 0.7s ease both;
+}
+
+.hero-logo {
+  width: min(240px, 55%);
+  height: auto;
+  border-radius: 24px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow);
 }
 
 .hero h1 {
