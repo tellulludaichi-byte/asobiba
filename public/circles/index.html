@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>参加サークル — utalpha</title>
+  <meta name="description" content="utalpha に参加しているサークルの一覧と紹介。">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="../index.html">ut<span class="alpha">α</span>lpha</a>
+      <nav class="site-nav">
+        <a href="../index.html">トップ</a>
+        <a href="../about/index.html">About</a>
+        <a href="index.html" aria-current="page">参加サークル</a>
+        <a href="../contact/index.html">お問い合わせ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-title">
+      <div class="container">
+        <h1>参加サークル</h1>
+        <p class="lead">utalpha に参加しているサークルたち</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+        <div class="card-grid" id="circle-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      &copy; 2026 utalpha
+    </div>
+  </footer>
+
+  <script src="../circles-data.js"></script>
+  <script>
+    const list = document.getElementById("circle-list");
+    for (const circle of CIRCLES) {
+      const card = document.createElement("article");
+      card.className = "card";
+
+      const tag = document.createElement("span");
+      tag.className = "tag";
+      tag.textContent = circle.category;
+
+      const heading = document.createElement("h3");
+      if (circle.url) {
+        const link = document.createElement("a");
+        link.href = circle.url;
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.textContent = circle.name;
+        heading.appendChild(link);
+      } else {
+        heading.textContent = circle.name;
+      }
+
+      const desc = document.createElement("p");
+      desc.textContent = circle.description;
+
+      card.append(tag, heading, desc);
+      list.appendChild(card);
+    }
+  </script>
+</body>
+</html>
