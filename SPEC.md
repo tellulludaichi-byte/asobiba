@@ -62,6 +62,14 @@
 6. **Email Routing 設定(手動)** — ダッシュボードで contact@utalpha.com を作成し受信転送先を設定 → contact ページの仮アドレスを確認・必要なら差し替え
 7. 以降の更新は「編集 → git commit → `npx wrangler deploy`」
 
+## TODO
+
+- [ ] 公開前: 写真に写っているメンバーの掲載了承を取る
+- [ ] 参加サークルのデータを集める(集まったら `circles-data.js` のサンプルを実データに差し替え)
+- [ ] 陸に戻ったら: 上記「デプロイ」手順を実施(Node.js → wrangler login → 仮デプロイ → ドメイン取得 → カスタムドメイン → Email Routing)
+- [ ] GitHub 連携をセットアップ(プライベートリポジトリ+push で自動デプロイ)→ ブラウザから `events-data.js` や写真を編集できるようになる
+- [ ] GitHub 運用を試したうえで、非エンジニアも更新するなら CMS(microCMS / Decap CMS など)の導入を検討。データは events-data.js / circles-data.js の構造をそのまま移植できる
+
 ## 決定事項ログ
 
 - 2026-07-09: Cloudflare Workers + Registrar + Email Routing の構成に決定。ドメイン候補は utalpha.com
