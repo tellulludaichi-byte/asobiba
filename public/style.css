@@ -104,25 +104,17 @@ a {
   font-weight: 700;
 }
 
-/* ヒーロー(トップページ):全面写真+中央白文字 */
+/* ヒーロー(トップページ):写真を切り抜かず丸ごと見せる(高さは写真の縦横比なり) */
 .hero {
   position: relative;
-  min-height: 520px;
-  display: flex;
-  /* 見出しは下寄せ(中央だと写真の顔と被る) */
-  align-items: flex-end;
-  justify-content: center;
-  text-align: center;
   overflow: hidden;
   border-bottom: 1px solid var(--border);
 }
 
 .hero-bg {
-  position: absolute;
-  inset: 0;
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
 }
 
 /* 写真の上に暗めのオーバーレイ */
@@ -130,13 +122,19 @@ a {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(24, 26, 34, 0.35) 0%, rgba(24, 26, 34, 0.62) 100%);
+  background: linear-gradient(180deg, rgba(24, 26, 34, 0.3) 0%, rgba(24, 26, 34, 0.6) 100%);
 }
 
+/* 見出しは写真の上に重ねて下寄せ(顔と被らないように) */
 .hero-content {
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 1;
-  padding: 24px 24px 52px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: center;
+  padding: 24px 24px 48px;
   animation: fade-up 0.7s ease both;
 }
 
@@ -146,12 +144,6 @@ a {
   line-height: 1.5;
   letter-spacing: 0.01em;
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.4);
-}
-
-@media (max-width: 800px) {
-  .hero {
-    min-height: 400px;
-  }
 }
 
 @keyframes fade-up {
