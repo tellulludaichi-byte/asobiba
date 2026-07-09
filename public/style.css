@@ -27,7 +27,7 @@ body {
 }
 
 a {
-  color: var(--accent);
+  color: var(--text);
   text-decoration: none;
 }
 
@@ -115,7 +115,7 @@ a:hover {
   bottom: -2px;
   height: 2px;
   border-radius: 2px;
-  background: var(--accent);
+  background: var(--text);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.2s ease;
@@ -123,7 +123,7 @@ a:hover {
 
 .site-nav a:hover,
 .site-nav a[aria-current="page"] {
-  color: var(--accent);
+  color: var(--text);
   text-decoration: none;
 }
 
@@ -460,6 +460,12 @@ a:hover {
 /* 本文 */
 .prose p + p {
   margin-top: 1em;
+}
+
+/* 本文中のリンクは黒+下線でリンクだと分かるようにする */
+.prose a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .prose dl {
