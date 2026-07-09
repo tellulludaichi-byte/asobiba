@@ -74,7 +74,10 @@ a:hover {
 }
 
 .brand {
-  font-size: 1.3rem;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 1.4rem;
   font-weight: 700;
   color: var(--text);
   letter-spacing: 0.02em;
@@ -86,12 +89,17 @@ a:hover {
 
 .brand .alpha {
   display: inline-block;
-  color: var(--accent);
   transition: transform 0.25s ease;
 }
 
 .brand:hover .alpha {
   transform: rotate(14deg) scale(1.15);
+}
+
+.brand .brand-tag {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
 }
 
 .site-nav {
@@ -133,53 +141,20 @@ a:hover {
 
 /* ヒーロー(トップページ) */
 .hero {
-  position: relative;
-  overflow: hidden;
-  padding: 112px 0;
+  padding: 72px 0 64px;
   text-align: center;
-  background:
-    radial-gradient(ellipse 60% 80% at 20% 0%, var(--accent-soft) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 70% at 85% 20%, #fdeef7 0%, transparent 70%),
-    var(--bg);
-}
-
-/* 背景にうっすら浮かぶ α */
-.hero::before,
-.hero::after {
-  content: "α";
-  position: absolute;
-  font-family: Georgia, "Times New Roman", serif;
-  color: var(--accent);
-  opacity: 0.06;
-  line-height: 1;
-  pointer-events: none;
-}
-
-.hero::before {
-  font-size: 22rem;
-  top: -4rem;
-  left: -3rem;
-  transform: rotate(-12deg);
-}
-
-.hero::after {
-  font-size: 14rem;
-  bottom: -3rem;
-  right: -1rem;
-  transform: rotate(18deg);
+  background: var(--bg);
 }
 
 .hero .container {
-  position: relative;
   animation: fade-up 0.7s ease both;
 }
 
+/* ロゴ画像は白背景なので、白いヒーローにそのまま溶け込ませる */
 .hero-logo {
-  width: min(240px, 55%);
+  width: min(300px, 65%);
   height: auto;
-  border-radius: 24px;
-  margin-bottom: 28px;
-  box-shadow: var(--shadow);
+  margin-bottom: 8px;
 }
 
 .hero h1 {
@@ -243,10 +218,15 @@ a:hover {
   margin-bottom: 28px;
 }
 
-.section h2::before {
-  content: "α ";
-  font-family: Georgia, "Times New Roman", serif;
-  color: var(--accent);
+/* 見出しの下にロゴの6色バー */
+.section h2::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 4px;
+  border-radius: 2px;
+  margin-top: 10px;
+  background: linear-gradient(90deg, #6fc76f, #e0c94f, #c95c5c, #c76fd1, #5b63d3, #6fcfc4);
 }
 
 /* カードグリッド */
@@ -291,12 +271,109 @@ a:hover {
   font-size: 0.95rem;
 }
 
+/* 活動写真ギャラリー(ポラロイド風) */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 32px 28px;
+  margin-top: 12px;
+}
+
+.polaroid {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 12px 12px 14px;
+  box-shadow: 0 4px 14px rgba(31, 36, 48, 0.1);
+  transform: rotate(-1.8deg);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.photo-grid .polaroid:nth-child(2n) {
+  transform: rotate(1.6deg);
+}
+
+.photo-grid .polaroid:nth-child(3n) {
+  transform: rotate(-0.8deg);
+}
+
+.polaroid:hover {
+  transform: rotate(0deg) scale(1.03);
+  box-shadow: var(--shadow);
+  z-index: 1;
+}
+
+/* マスキングテープ */
+.polaroid::before {
+  content: "";
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  width: 84px;
+  height: 22px;
+  transform: translateX(-50%) rotate(-3deg);
+  background: rgba(224, 201, 79, 0.55);
+}
+
+.photo-grid .polaroid:nth-child(2n)::before {
+  background: rgba(111, 199, 111, 0.5);
+  transform: translateX(-50%) rotate(2.5deg);
+}
+
+.photo-grid .polaroid:nth-child(3n)::before {
+  background: rgba(199, 111, 209, 0.45);
+}
+
+.photo-grid .polaroid:nth-child(4n)::before {
+  background: rgba(111, 207, 196, 0.55);
+  transform: translateX(-50%) rotate(-2deg);
+}
+
+.polaroid img {
+  display: block;
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.polaroid figcaption {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.polaroid figcaption .date {
+  font-weight: 700;
+  color: var(--text);
+  margin-right: 8px;
+}
+
+/* 本文中の写真 */
+.photo-inline {
+  margin: 24px 0 8px;
+}
+
+.photo-inline img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.photo-inline figcaption {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
 /* ページタイトル(下層ページ) */
 .page-title {
   padding: 56px 0 0;
-  background:
-    radial-gradient(ellipse 50% 100% at 15% 0%, var(--accent-soft) 0%, transparent 75%),
-    var(--bg);
 }
 
 .page-title h1 {
