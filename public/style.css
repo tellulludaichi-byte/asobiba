@@ -4,8 +4,8 @@
   --accent: #5b63d3;
   --accent-dark: #454bb0;
   --accent-soft: #eef0fb;
-  --text: #33363a; /* ロゴのチャコールに合わせる */
-  --text-muted: #5f6675;
+  --text: #000000;
+  --text-muted: #3d3d3d; /* 補足文用。ほぼ黒だが本文より一段弱く */
   --bg: #ffffff;
   --bg-alt: #f7f8fb;
   --border: #e4e7ee;
