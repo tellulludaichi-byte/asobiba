@@ -55,7 +55,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
+  height: 72px;
 }
 
 /* ロゴ扱いのサイト名は下線なし */
@@ -63,10 +63,10 @@ a {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--text);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.06em;
   text-decoration: none;
 }
 
@@ -86,12 +86,13 @@ a {
 
 .site-nav {
   display: flex;
-  gap: 28px;
+  gap: 32px;
 }
 
 .site-nav a {
   color: var(--text-muted);
-  font-size: 0.95rem;
+  font-size: 0.88rem;
+  letter-spacing: 0.08em;
   padding: 4px 0;
 }
 
@@ -133,33 +134,37 @@ a {
   }
 }
 
-/* 写真の上に暗めのオーバーレイ */
+/* 写真の下側だけを静かに暗くする(文字影に頼らない) */
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(24, 26, 34, 0.3) 0%, rgba(24, 26, 34, 0.6) 100%);
+  background: linear-gradient(180deg, transparent 40%, rgba(10, 12, 16, 0.62) 100%);
 }
 
-/* 見出しは写真の上に重ねて下寄せ(顔と被らないように) */
+/* 見出しは左下に置く */
 .hero-content {
   position: absolute;
   inset: 0;
   z-index: 1;
   display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  text-align: center;
-  padding: 24px 24px 48px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  text-align: left;
+  padding: 24px 24px 52px max(24px, calc((100vw - 960px) / 2 + 24px));
   animation: fade-up 0.7s ease both;
+}
+
+.hero-content .kicker {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .hero-content h1 {
   color: #fff;
-  font-size: clamp(1.9rem, 5vw, 3rem);
-  line-height: 1.5;
-  letter-spacing: 0.01em;
-  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.4);
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  line-height: 1.6;
+  letter-spacing: 0.06em;
 }
 
 @keyframes fade-up {
@@ -196,16 +201,26 @@ a {
 
 /* セクション共通 */
 .section {
-  padding: 72px 0;
+  padding: 96px 0;
 }
 
-.section:nth-of-type(even) {
-  background: var(--bg-alt);
+.section + .section {
+  border-top: 1px solid var(--border);
 }
 
 .section h2 {
-  font-size: 1.5rem;
-  margin-bottom: 28px;
+  font-size: 1.9rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 40px;
+}
+
+/* 見出し上の英字ラベル */
+.kicker {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--text-muted);
+  margin-bottom: 6px;
 }
 
 
@@ -225,7 +240,7 @@ a {
 }
 
 .card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   box-shadow: var(--shadow);
   border-color: #c9cdd6;
 }
@@ -326,21 +341,21 @@ a {
   border: 1px solid var(--border);
   border-radius: 3px;
   padding: 12px 12px 14px;
-  box-shadow: 0 4px 14px rgba(31, 36, 48, 0.1);
-  transform: rotate(-1.8deg);
+  box-shadow: 0 4px 14px rgba(31, 36, 48, 0.08);
+  transform: rotate(-1deg);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .photo-grid .polaroid:nth-child(2n) {
-  transform: rotate(1.6deg);
+  transform: rotate(0.8deg);
 }
 
 .photo-grid .polaroid:nth-child(3n) {
-  transform: rotate(-0.8deg);
+  transform: rotate(-0.5deg);
 }
 
 .polaroid:hover {
-  transform: rotate(0deg) scale(1.03);
+  transform: rotate(0deg) translateY(-3px);
   box-shadow: var(--shadow);
   z-index: 1;
 }
@@ -414,19 +429,24 @@ a {
 
 /* ページタイトル(下層ページ) */
 .page-title {
-  padding: 56px 0 0;
+  padding: 88px 0 0;
 }
 
 .page-title h1 {
-  font-size: 2rem;
+  font-size: 2.2rem;
+  letter-spacing: 0.05em;
 }
 
 .page-title .lead {
   color: var(--text-muted);
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
 /* 本文 */
+.prose {
+  max-width: 42em;
+}
+
 .prose p + p {
   margin-top: 1em;
 }
@@ -449,18 +469,35 @@ a {
 /* フッター */
 .site-footer {
   border-top: 1px solid var(--border);
-  padding: 40px 0;
-  margin-top: 64px;
+  padding: 64px 0 48px;
+  margin-top: 96px;
   text-align: center;
   color: var(--text-muted);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
 }
 
 .site-footer .footer-logo {
   display: block;
-  height: 52px;
+  height: 44px;
   width: auto;
-  margin: 0 auto 10px;
+  margin: 0 auto 20px;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-bottom: 24px;
+  font-size: 0.85rem;
+}
+
+.footer-nav a {
+  color: var(--text-muted);
+}
+
+.footer-nav a:hover {
+  color: var(--text);
 }
 
 /* アニメーションを減らす設定のユーザーには動きを止める */
