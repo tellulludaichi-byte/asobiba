@@ -70,6 +70,7 @@
 - [ ] 陸に戻ったら: 上記「デプロイ」手順を実施(Node.js → wrangler login → 仮デプロイ → ドメイン取得 → カスタムドメイン → Email Routing)
 - [ ] GitHub 連携をセットアップ(プライベートリポジトリ+push で自動デプロイ)→ ブラウザから `events-data.js` や写真を編集できるようになる
 - [ ] GitHub 運用を試したうえで、非エンジニアも更新するなら CMS(microCMS / Decap CMS など)の導入を検討。データは events-data.js / circles-data.js の構造をそのまま移植できる
+- [ ] SNS リンク(フッター・Contact)を、いずれテキストからアイコン付きの UI ボタンに置き換える(モノクロ基調は維持。X/Instagram の公式ロゴを SVG で自前配置 — CDN は使わない)
 
 ## 決定事項ログ
 
