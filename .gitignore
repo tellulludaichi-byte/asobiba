@@ -1,3 +1,7 @@
 node_modules/
 .wrangler/
 .dev.vars
+
+# docs は内部資料(名簿・会則など)なので README 以外はコミットしない
+docs/*
+!docs/README.md
