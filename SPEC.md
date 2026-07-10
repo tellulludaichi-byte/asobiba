@@ -17,6 +17,7 @@
 | ホスティング | Cloudflare Workers(静的サイト配信) |
 | ドメイン | `utalpha.com`(候補)— Cloudflare Registrar で取得予定 |
 | メール | Cloudflare Email Routing で問い合わせ用アドレスを作成 |
+| SNS | X / Instagram ともに `@ut_plusalpha`(フッターと Contact に掲載) |
 | 初期費用見込み | 年間 約1,600円(ドメイン代) |
 
 ## サイト構成

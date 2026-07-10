@@ -517,6 +517,22 @@ a {
   color: var(--text);
 }
 
+.footer-sns {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 24px;
+  font-size: 0.85rem;
+}
+
+.footer-sns a {
+  color: var(--text-muted);
+}
+
+.footer-sns a:hover {
+  color: var(--text);
+}
+
 /* アニメーションを減らす設定のユーザーには動きを止める */
 @media (prefers-reduced-motion: reduce) {
   *,
