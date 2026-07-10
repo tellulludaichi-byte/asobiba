@@ -33,7 +33,7 @@
     <section class="section">
       <div class="container">
         <div class="prose">
-          <p>+α にサークルが加盟しているわけではありません。いろんなサークル・団体のメンバーが個人として +α に参加していて、企画によっては自分のサークルを巻き込める — そんな「つながり」の一覧です。</p>
+          <p>いろんなサークル・団体のメンバーが個人として +α に参加していて、企画によっては自分のサークルを巻き込める — そんな「つながり」の一覧です。</p>
           <p id="circle-count"></p>
         </div>
         <ul class="circle-tags" id="circle-list"></ul>
@@ -60,13 +60,16 @@
 
   <script src="../circles-data.js"></script>
   <script>
+    // 掲載の承諾を得た(approved: true)ものだけ表示する
+    const approvedCircles = CIRCLES.filter((circle) => circle.approved);
+
     document.getElementById("circle-count").textContent =
-      "現在 " + CIRCLES.length + " のサークル・団体とつながっています。";
+      "現在 " + approvedCircles.length + " のサークル・団体とつながっています。";
 
     const list = document.getElementById("circle-list");
-    for (const name of CIRCLES) {
+    for (const circle of approvedCircles) {
       const item = document.createElement("li");
-      item.textContent = name;
+      item.textContent = circle.name;
       list.appendChild(item);
     }
   </script>
