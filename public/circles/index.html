@@ -33,9 +33,10 @@
     <section class="section">
       <div class="container">
         <div class="prose">
-          <p>+α にサークルが加盟しているわけではありません。いろんなサークルのメンバーが個人として +α に参加していて、企画によっては自分のサークルを巻き込める — そんな「つながり」の一覧です。</p>
+          <p>+α にサークルが加盟しているわけではありません。いろんなサークル・団体のメンバーが個人として +α に参加していて、企画によっては自分のサークルを巻き込める — そんな「つながり」の一覧です。</p>
+          <p id="circle-count"></p>
         </div>
-        <div class="card-grid" id="circle-list" style="margin-top: 32px;"></div>
+        <ul class="circle-tags" id="circle-list"></ul>
       </div>
     </section>
   </main>
@@ -55,32 +56,14 @@
 
   <script src="../circles-data.js"></script>
   <script>
+    document.getElementById("circle-count").textContent =
+      "現在 " + CIRCLES.length + " のサークル・団体とつながっています。";
+
     const list = document.getElementById("circle-list");
-    for (const circle of CIRCLES) {
-      const card = document.createElement("article");
-      card.className = "card";
-
-      const tag = document.createElement("span");
-      tag.className = "tag";
-      tag.textContent = circle.category;
-
-      const heading = document.createElement("h3");
-      if (circle.url) {
-        const link = document.createElement("a");
-        link.href = circle.url;
-        link.target = "_blank";
-        link.rel = "noopener";
-        link.textContent = circle.name;
-        heading.appendChild(link);
-      } else {
-        heading.textContent = circle.name;
-      }
-
-      const desc = document.createElement("p");
-      desc.textContent = circle.description;
-
-      card.append(tag, heading, desc);
-      list.appendChild(card);
+    for (const name of CIRCLES) {
+      const item = document.createElement("li");
+      item.textContent = name;
+      list.appendChild(item);
     }
   </script>
 </body>
