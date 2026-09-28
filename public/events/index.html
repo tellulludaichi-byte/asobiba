@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>過去のイベント — 東大生の遊び場+α</title>
+  <meta name="description" content="東大生の遊び場+α(プラスアルファ)がこれまでに開催してきたイベント・活動の一覧。">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+</head>
+<body class="pg-events">
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="../index.html">東大生の遊び場<img class="brand-logo" src="../images/logo.png" alt="+α"></a>
+      <nav class="site-nav">
+        <a href="../index.html">トップ</a>
+        <a href="index.html" aria-current="page">イベント</a>
+        <a href="../about/index.html">About</a>
+        <a href="../circles/index.html">サークル</a>
+        <a href="../contact/index.html">お問い合わせ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-title">
+      <div class="container">
+        <p class="kicker">ACTIVITY</p>
+        <h1>過去のイベント</h1>
+        <p class="lead">これまでに開催してきたイベント・活動の一覧</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+        <div class="photo-grid" id="activity-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <img class="footer-logo" src="../images/logo.png" alt="+α">
+      <nav class="footer-nav">
+        <a href="../index.html">トップ</a>
+        <a href="index.html">イベント</a>
+        <a href="../about/index.html">About</a>
+        <a href="../circles/index.html">サークル</a>
+        <a href="../contact/index.html">お問い合わせ</a>
+      </nav>
+      <div class="footer-sns">
+        <a href="https://x.com/ut_plusalpha" target="_blank" rel="noopener">X: @ut_plusalpha</a>
+        <a href="https://www.instagram.com/ut_plusalpha/" target="_blank" rel="noopener">Instagram: @ut_plusalpha</a>
+      </div>
+      &copy; 2026 東大生の遊び場+α
+    </div>
+  </footer>
+
+  <script src="../events-data.js"></script>
+  <script>
+    // 今までの活動(PAST_ACTIVITIES)の描画。ここでは全件を表示する
+    const activityList = document.getElementById("activity-list");
+    for (const activity of PAST_ACTIVITIES) {
+      const figure = document.createElement("figure");
+      figure.className = "polaroid";
+
+      const img = document.createElement("img");
+      img.src = "../" + activity.src;
+      img.alt = activity.alt;
+      img.loading = "lazy";
+
+      const caption = document.createElement("figcaption");
+      const date = document.createElement("span");
+      date.className = "date";
+      date.textContent = activity.date;
+      caption.append(date, activity.title);
+
+      figure.append(img, caption);
+      activityList.appendChild(figure);
+    }
+  </script>
+</body>
+</html>

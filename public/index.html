@@ -14,6 +14,7 @@
       <a class="brand" href="index.html">東大生の遊び場<img class="brand-logo" src="images/logo.png" alt="+α"></a>
       <nav class="site-nav">
         <a href="index.html" aria-current="page">トップ</a>
+        <a href="events/index.html">イベント</a>
         <a href="about/index.html">About</a>
         <a href="circles/index.html">サークル</a>
         <a href="contact/index.html">お問い合わせ</a>
@@ -42,6 +43,9 @@
         <p class="kicker">ACTIVITY</p>
         <h2>今までの活動</h2>
         <div class="photo-grid" id="activity-list"></div>
+        <div class="prose">
+          <p><a href="events/index.html">過去のイベント一覧を見る →</a></p>
+        </div>
       </div>
     </section>
 
@@ -66,6 +70,14 @@
         </div>
       </div>
     </section>
+
+    <section class="section" id="sponsors" hidden>
+      <div class="container">
+        <p class="kicker">SPONSOR</p>
+        <h2>協賛企業</h2>
+        <div class="sponsor-list" id="sponsor-list"></div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -73,6 +85,7 @@
       <img class="footer-logo" src="images/logo.png" alt="+α">
       <nav class="footer-nav">
         <a href="index.html">トップ</a>
+        <a href="events/index.html">イベント</a>
         <a href="about/index.html">About</a>
         <a href="circles/index.html">サークル</a>
         <a href="contact/index.html">お問い合わせ</a>
@@ -86,6 +99,7 @@
   </footer>
 
   <script src="events-data.js"></script>
+  <script src="sponsors-data.js"></script>
   <script>
     // イベント情報(UPCOMING_EVENTS)の描画
     const eventList = document.getElementById("event-list");
@@ -110,21 +124,23 @@
       const body = document.createElement("div");
       body.className = "event-body";
 
-      const flyerGrid = document.createElement("div");
-      flyerGrid.className = "flyer-grid";
-      for (const flyer of event.flyers) {
-        const link = document.createElement("a");
-        link.href = flyer.src;
-        link.target = "_blank";
-        link.rel = "noopener";
-        const img = document.createElement("img");
-        img.src = flyer.src;
-        img.alt = flyer.alt;
-        img.loading = "lazy";
-        link.appendChild(img);
-        flyerGrid.appendChild(link);
+      if (event.flyers.length > 0) {
+        const flyerGrid = document.createElement("div");
+        flyerGrid.className = "flyer-grid";
+        for (const flyer of event.flyers) {
+          const link = document.createElement("a");
+          link.href = flyer.src;
+          link.target = "_blank";
+          link.rel = "noopener";
+          const img = document.createElement("img");
+          img.src = flyer.src;
+          img.alt = flyer.alt;
+          img.loading = "lazy";
+          link.appendChild(img);
+          flyerGrid.appendChild(link);
+        }
+        body.appendChild(flyerGrid);
       }
-      body.appendChild(flyerGrid);
 
       const prose = document.createElement("div");
       prose.className = "prose";
@@ -155,9 +171,9 @@
       eventList.appendChild(card);
     }
 
-    // 今までの活動(PAST_ACTIVITIES)の描画
+    // 今までの活動(PAST_ACTIVITIES)の描画。トップページには最新6件だけ載せ、全件は /events で見せる
     const activityList = document.getElementById("activity-list");
-    for (const activity of PAST_ACTIVITIES) {
+    for (const activity of PAST_ACTIVITIES.slice(0, 6)) {
       const figure = document.createElement("figure");
       figure.className = "polaroid";
 
@@ -174,6 +190,43 @@
 
       figure.append(img, caption);
       activityList.appendChild(figure);
+    }
+
+    // 協賛企業(SPONSORS)の描画。写真を背景に、ロゴ・社名・紹介文を重ねたバナーとして表示する。
+    // 掲載できる企業が1件もない間はセクションごと非表示にする
+    const approvedSponsors = SPONSORS.filter((sponsor) => sponsor.approved);
+    if (approvedSponsors.length > 0) {
+      const sponsorList = document.getElementById("sponsor-list");
+      for (const sponsor of approvedSponsors) {
+        const link = document.createElement("a");
+        link.className = "sponsor-feature";
+        link.href = sponsor.url;
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.style.backgroundImage = `url("${sponsor.photo}")`;
+
+        const overlay = document.createElement("div");
+        overlay.className = "sponsor-feature-overlay";
+
+        const logo = document.createElement("img");
+        logo.className = "sponsor-feature-logo";
+        logo.src = sponsor.logo;
+        logo.alt = sponsor.name;
+        logo.loading = "lazy";
+
+        const name = document.createElement("p");
+        name.className = "sponsor-feature-name";
+        name.textContent = sponsor.name;
+
+        const desc = document.createElement("p");
+        desc.className = "sponsor-feature-desc";
+        desc.textContent = sponsor.description;
+
+        overlay.append(logo, name, desc);
+        link.appendChild(overlay);
+        sponsorList.appendChild(link);
+      }
+      document.getElementById("sponsors").hidden = false;
     }
   </script>
 </body>

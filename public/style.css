@@ -19,9 +19,24 @@
 body {
   font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
   color: var(--text);
-  background: var(--bg);
+  background-color: var(--bg);
+  /* ロゴの「+」に使われている色の水玉模様(参考: 公式Instagramの投稿画像に合わせた配色・サイズ感・重なり具合)。
+     縦に長い1枚の絵(1600x7200)を用意し、ページごとに background-position で違う位置を切り出して使う。
+     繰り返し(repeat)はしないので、スクロールしても同じ柄が繰り返される見た目にならない。
+     background-size を横幅基準にしているので、ウィンドウを最大化しても横いっぱいにフィットする。
+     カードなど背景が不透明な要素の下には隠れるので、余白部分にだけうっすら見える */
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'1600'%20height%3D'7200'%3E%3Ccircle%20cx%3D'-18.9'%20cy%3D'76.4'%20r%3D'294.0'%20fill%3D'none'%20stroke%3D'rgba(216%2C95%2C220%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'274.9'%20cy%3D'169.6'%20r%3D'315.0'%20fill%3D'none'%20stroke%3D'rgba(220%2C215%2C94%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'1381.4'%20cy%3D'738.6'%20r%3D'261.3'%20fill%3D'rgba(216%2C95%2C220%2C0.4)'%2F%3E%3Ccircle%20cx%3D'1562.6'%20cy%3D'655.4'%20r%3D'252.2'%20fill%3D'rgba(219%2C92%2C97%2C0.4)'%2F%3E%3Ccircle%20cx%3D'1061.7'%20cy%3D'262.7'%20r%3D'40.7'%20fill%3D'none'%20stroke%3D'rgba(220%2C215%2C94%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'916.3'%20cy%3D'345.9'%20r%3D'40.4'%20fill%3D'rgba(219%2C92%2C97%2C0.4)'%2F%3E%3Ccircle%20cx%3D'76.0'%20cy%3D'585.4'%20r%3D'41.5'%20fill%3D'rgba(95%2C219%2C92%2C0.4)'%2F%3E%3Ccircle%20cx%3D'1351.3'%20cy%3D'232.5'%20r%3D'44.7'%20fill%3D'rgba(216%2C95%2C220%2C0.4)'%2F%3E%3Ccircle%20cx%3D'1566.2'%20cy%3D'1081.6'%20r%3D'306.9'%20fill%3D'none'%20stroke%3D'rgba(94%2C97%2C220%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'1377.8'%20cy%3D'804.4'%20r%3D'310.9'%20fill%3D'rgba(96%2C220%2C216%2C0.4)'%2F%3E%3Ccircle%20cx%3D'84.4'%20cy%3D'1425.2'%20r%3D'289.3'%20fill%3D'none'%20stroke%3D'rgba(216%2C95%2C220%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'171.6'%20cy%3D'1608.8'%20r%3D'212.5'%20fill%3D'none'%20stroke%3D'rgba(94%2C97%2C220%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'446.2'%20cy%3D'1047.6'%20r%3D'39.1'%20fill%3D'rgba(216%2C95%2C220%2C0.4)'%2F%3E%3Ccircle%20cx%3D'1039.0'%20cy%3D'1626.1'%20r%3D'43.1'%20fill%3D'none'%20stroke%3D'rgba(95%2C219%2C92%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'1334.3'%20cy%3D'1544.6'%20r%3D'29.8'%20fill%3D'rgba(94%2C97%2C220%2C0.4)'%2F%3E%3Ccircle%20cx%3D'613.8'%20cy%3D'1126.7'%20r%3D'22.7'%20fill%3D'rgba(220%2C215%2C94%2C0.4)'%2F%3E%3Ccircle%20cx%3D'213.3'%20cy%3D'1735.0'%20r%3D'209.0'%20fill%3D'rgba(96%2C220%2C216%2C0.4)'%2F%3E%3Ccircle%20cx%3D'42.7'%20cy%3D'1791.0'%20r%3D'260.0'%20fill%3D'none'%20stroke%3D'rgba(96%2C220%2C216%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'1406.4'%20cy%3D'2483.1'%20r%3D'321.5'%20fill%3D'rgba(220%2C215%2C94%2C0.4)'%2F%3E%3Ccircle%20cx%3D'1537.6'%20cy%3D'2190.9'%20r%3D'332.7'%20fill%3D'rgba(216%2C95%2C220%2C0.4)'%2F%3E%3Ccircle%20cx%3D'617.2'%20cy%3D'1762.9'%20r%3D'46.8'%20fill%3D'rgba(219%2C92%2C97%2C0.4)'%2F%3E%3Ccircle%20cx%3D'1160.0'%20cy%3D'2429.4'%20r%3D'43.0'%20fill%3D'rgba(216%2C95%2C220%2C0.4)'%2F%3E%3Ccircle%20cx%3D'431.5'%20cy%3D'2295.9'%20r%3D'31.9'%20fill%3D'none'%20stroke%3D'rgba(95%2C219%2C92%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'1392.6'%20cy%3D'2292.4'%20r%3D'45.9'%20fill%3D'rgba(94%2C97%2C220%2C0.4)'%2F%3E%3Ccircle%20cx%3D'716.7'%20cy%3D'2349.2'%20r%3D'81.9'%20fill%3D'none'%20stroke%3D'rgba(220%2C215%2C94%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'1359.2'%20cy%3D'2490.7'%20r%3D'307.5'%20fill%3D'none'%20stroke%3D'rgba(216%2C95%2C220%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'1584.8'%20cy%3D'2675.3'%20r%3D'256.6'%20fill%3D'rgba(220%2C215%2C94%2C0.4)'%2F%3E%3Ccircle%20cx%3D'269.7'%20cy%3D'3187.0'%20r%3D'326.6'%20fill%3D'rgba(220%2C215%2C94%2C0.4)'%2F%3E%3Ccircle%20cx%3D'-13.7'%20cy%3D'3127.0'%20r%3D'228.4'%20fill%3D'none'%20stroke%3D'rgba(95%2C219%2C92%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'771.2'%20cy%3D'2841.6'%20r%3D'33.9'%20fill%3D'none'%20stroke%3D'rgba(220%2C215%2C94%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'530.3'%20cy%3D'2557.5'%20r%3D'37.2'%20fill%3D'rgba(96%2C220%2C216%2C0.4)'%2F%3E%3Ccircle%20cx%3D'743.1'%20cy%3D'2883.1'%20r%3D'34.5'%20fill%3D'rgba(96%2C220%2C216%2C0.4)'%2F%3E%3Ccircle%20cx%3D'905.7'%20cy%3D'2609.5'%20r%3D'35.4'%20fill%3D'none'%20stroke%3D'rgba(220%2C215%2C94%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'247.0'%20cy%3D'3471.7'%20r%3D'267.5'%20fill%3D'rgba(220%2C215%2C94%2C0.4)'%2F%3E%3Ccircle%20cx%3D'9.0'%20cy%3D'3334.3'%20r%3D'266.1'%20fill%3D'none'%20stroke%3D'rgba(94%2C97%2C220%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'1389.8'%20cy%3D'4026.9'%20r%3D'222.8'%20fill%3D'none'%20stroke%3D'rgba(95%2C219%2C92%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'1554.2'%20cy%3D'3927.1'%20r%3D'249.9'%20fill%3D'none'%20stroke%3D'rgba(95%2C219%2C92%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'47.2'%20cy%3D'3552.7'%20r%3D'37.4'%20fill%3D'none'%20stroke%3D'rgba(219%2C92%2C97%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'692.7'%20cy%3D'3613.5'%20r%3D'23.7'%20fill%3D'rgba(95%2C219%2C92%2C0.4)'%2F%3E%3Ccircle%20cx%3D'115.5'%20cy%3D'3856.5'%20r%3D'34.1'%20fill%3D'none'%20stroke%3D'rgba(94%2C97%2C220%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'771.6'%20cy%3D'3598.9'%20r%3D'139.4'%20fill%3D'rgba(216%2C95%2C220%2C0.4)'%2F%3E%3Ccircle%20cx%3D'1361.8'%20cy%3D'4272.9'%20r%3D'286.8'%20fill%3D'rgba(95%2C219%2C92%2C0.4)'%2F%3E%3Ccircle%20cx%3D'1582.2'%20cy%3D'4173.1'%20r%3D'268.2'%20fill%3D'rgba(96%2C220%2C216%2C0.4)'%2F%3E%3Ccircle%20cx%3D'94.3'%20cy%3D'4677.3'%20r%3D'295.6'%20fill%3D'none'%20stroke%3D'rgba(216%2C95%2C220%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'161.7'%20cy%3D'4916.7'%20r%3D'208.9'%20fill%3D'rgba(219%2C92%2C97%2C0.4)'%2F%3E%3Ccircle%20cx%3D'789.0'%20cy%3D'4682.5'%20r%3D'31.8'%20fill%3D'rgba(220%2C215%2C94%2C0.4)'%2F%3E%3Ccircle%20cx%3D'427.2'%20cy%3D'4250.7'%20r%3D'36.8'%20fill%3D'rgba(216%2C95%2C220%2C0.4)'%2F%3E%3Ccircle%20cx%3D'91.0'%20cy%3D'4116.6'%20r%3D'38.9'%20fill%3D'rgba(96%2C220%2C216%2C0.4)'%2F%3E%3Ccircle%20cx%3D'986.9'%20cy%3D'4283.8'%20r%3D'44.8'%20fill%3D'rgba(219%2C92%2C97%2C0.4)'%2F%3E%3Ccircle%20cx%3D'130.3'%20cy%3D'4952.4'%20r%3D'267.9'%20fill%3D'rgba(96%2C220%2C216%2C0.4)'%2F%3E%3Ccircle%20cx%3D'125.7'%20cy%3D'5133.6'%20r%3D'209.8'%20fill%3D'rgba(95%2C219%2C92%2C0.4)'%2F%3E%3Ccircle%20cx%3D'1386.0'%20cy%3D'5681.7'%20r%3D'240.9'%20fill%3D'none'%20stroke%3D'rgba(95%2C219%2C92%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'1558.0'%20cy%3D'5552.3'%20r%3D'284.1'%20fill%3D'rgba(220%2C215%2C94%2C0.4)'%2F%3E%3Ccircle%20cx%3D'660.3'%20cy%3D'5202.2'%20r%3D'34.0'%20fill%3D'rgba(96%2C220%2C216%2C0.4)'%2F%3E%3Ccircle%20cx%3D'1570.9'%20cy%3D'5049.9'%20r%3D'36.0'%20fill%3D'none'%20stroke%3D'rgba(219%2C92%2C97%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'615.5'%20cy%3D'5414.7'%20r%3D'40.7'%20fill%3D'rgba(216%2C95%2C220%2C0.4)'%2F%3E%3Ccircle%20cx%3D'1198.2'%20cy%3D'5177.5'%20r%3D'23.2'%20fill%3D'rgba(219%2C92%2C97%2C0.4)'%2F%3E%3Ccircle%20cx%3D'567.9'%20cy%3D'5318.3'%20r%3D'130.2'%20fill%3D'none'%20stroke%3D'rgba(94%2C97%2C220%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'1485.1'%20cy%3D'5985.1'%20r%3D'291.6'%20fill%3D'rgba(219%2C92%2C97%2C0.4)'%2F%3E%3Ccircle%20cx%3D'1458.9'%20cy%3D'5740.9'%20r%3D'333.8'%20fill%3D'rgba(94%2C97%2C220%2C0.4)'%2F%3E%3Ccircle%20cx%3D'98.9'%20cy%3D'6353.3'%20r%3D'243.9'%20fill%3D'none'%20stroke%3D'rgba(219%2C92%2C97%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'157.1'%20cy%3D'6520.7'%20r%3D'221.0'%20fill%3D'rgba(220%2C215%2C94%2C0.4)'%2F%3E%3Ccircle%20cx%3D'263.2'%20cy%3D'6260.4'%20r%3D'33.2'%20fill%3D'rgba(94%2C97%2C220%2C0.4)'%2F%3E%3Ccircle%20cx%3D'1330.6'%20cy%3D'6156.6'%20r%3D'29.4'%20fill%3D'none'%20stroke%3D'rgba(95%2C219%2C92%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'551.6'%20cy%3D'5909.2'%20r%3D'29.6'%20fill%3D'none'%20stroke%3D'rgba(94%2C97%2C220%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'548.8'%20cy%3D'6187.1'%20r%3D'31.5'%20fill%3D'rgba(220%2C215%2C94%2C0.4)'%2F%3E%3Ccircle%20cx%3D'555.2'%20cy%3D'6130.2'%20r%3D'117.4'%20fill%3D'rgba(220%2C215%2C94%2C0.4)'%2F%3E%3Ccircle%20cx%3D'258.4'%20cy%3D'6672.3'%20r%3D'242.9'%20fill%3D'rgba(96%2C220%2C216%2C0.4)'%2F%3E%3Ccircle%20cx%3D'-2.4'%20cy%3D'6693.7'%20r%3D'276.5'%20fill%3D'none'%20stroke%3D'rgba(220%2C215%2C94%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'1488.8'%20cy%3D'7366.2'%20r%3D'225.6'%20fill%3D'rgba(94%2C97%2C220%2C0.4)'%2F%3E%3Ccircle%20cx%3D'1455.2'%20cy%3D'7147.8'%20r%3D'304.8'%20fill%3D'rgba(216%2C95%2C220%2C0.4)'%2F%3E%3Ccircle%20cx%3D'457.9'%20cy%3D'6799.2'%20r%3D'32.4'%20fill%3D'none'%20stroke%3D'rgba(219%2C92%2C97%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3Ccircle%20cx%3D'988.6'%20cy%3D'6701.9'%20r%3D'44.0'%20fill%3D'rgba(94%2C97%2C220%2C0.4)'%2F%3E%3Ccircle%20cx%3D'572.9'%20cy%3D'6574.2'%20r%3D'47.3'%20fill%3D'rgba(96%2C220%2C216%2C0.4)'%2F%3E%3Ccircle%20cx%3D'649.6'%20cy%3D'6788.2'%20r%3D'118.8'%20fill%3D'none'%20stroke%3D'rgba(94%2C97%2C220%2C0.55)'%20stroke-width%3D'2.5'%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-size: 100vw auto;
+  background-position: top center;
   line-height: 1.8;
 }
+
+/* ページごとに背景の絵の切り出し位置を変える(同じ絵の別の場所を見せているだけ) */
+.pg-about { background-position: center -2200px; }
+.pg-circles { background-position: center -4400px; }
+.pg-contact { background-position: center -1200px; }
+.pg-events { background-position: center -3300px; }
 
 /* リンク(踏めるところ)は常に下線を付ける */
 a {
@@ -234,7 +249,7 @@ a {
 .card {
   background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 0;
   padding: 26px;
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
@@ -271,7 +286,7 @@ a {
 .event-card {
   background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 0;
   padding: 28px;
   box-shadow: 0 2px 10px rgba(31, 36, 48, 0.04);
 }
@@ -290,6 +305,11 @@ a {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
   gap: 28px;
   align-items: start;
+}
+
+/* フライヤー画像がないイベントは1カラムにする */
+.event-body:has(> .prose:only-child) {
+  grid-template-columns: 1fr;
 }
 
 .flyer-grid {
@@ -416,7 +436,7 @@ a {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: var(--radius);
+  border-radius: 0;
   box-shadow: var(--shadow);
 }
 
@@ -427,21 +447,147 @@ a {
   text-align: center;
 }
 
-/* サークル名の一覧(押せそうに見えないよう、ただのテキストとして流し込む) */
-.circle-tags {
-  display: flex;
-  flex-wrap: wrap;
-  row-gap: 10px;
+/* サークル一覧(小さめのカードグリッド。名前だけ必須で、ロゴ・写真・紹介文・リンクは任意) */
+.circle-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
   margin-top: 36px;
   list-style: none;
-  font-size: 0.95rem;
+}
+
+.circle-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.circle-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  border-color: #c9cdd6;
+}
+
+.circle-card-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.circle-card-photo {
+  aspect-ratio: 16 / 9;
+  background: var(--bg-alt);
+}
+
+.circle-card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.circle-card-body {
+  padding: 16px 18px;
+}
+
+.circle-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.circle-card-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.circle-card-header h3 {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.circle-card-body p {
+  margin-top: 8px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
   line-height: 1.6;
 }
 
-.circle-tags li:not(:last-child)::after {
-  content: "/";
-  margin: 0 14px;
-  color: #c9cdd6;
+/* 協賛企業(写真を背景に、ロゴ・社名・紹介文を重ねたバナー) */
+.sponsor-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 12px;
+}
+
+.sponsor-feature {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  min-height: 420px;
+  background-color: var(--bg-alt);
+  background-size: cover;
+  background-position: center;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.sponsor-feature:hover {
+  opacity: 0.92;
+  text-decoration: none;
+}
+
+/* 写真の上に一段暗さを重ねて、白文字を読みやすくする */
+.sponsor-feature::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 12, 16, 0.55);
+}
+
+.sponsor-feature-overlay {
+  position: relative;
+  z-index: 1;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
+  padding: 56px 24px;
+}
+
+.sponsor-feature-logo {
+  display: block;
+  height: 64px;
+  width: auto;
+  max-width: 260px;
+  object-fit: contain;
+  background: #fff;
+  padding: 14px 24px;
+}
+
+.sponsor-feature-name {
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.sponsor-feature-desc {
+  max-width: 560px;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.95rem;
+  line-height: 1.8;
 }
 
 /* ページタイトル(下層ページ) */

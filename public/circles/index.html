@@ -8,12 +8,13 @@
   <link rel="stylesheet" href="../style.css">
   <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
 </head>
-<body>
+<body class="pg-circles">
   <header class="site-header">
     <div class="container">
       <a class="brand" href="../index.html">東大生の遊び場<img class="brand-logo" src="../images/logo.png" alt="+α"></a>
       <nav class="site-nav">
         <a href="../index.html">トップ</a>
+        <a href="../events/index.html">イベント</a>
         <a href="../about/index.html">About</a>
         <a href="index.html" aria-current="page">サークル</a>
         <a href="../contact/index.html">お問い合わせ</a>
@@ -36,7 +37,7 @@
           <p>いろんなサークル・団体のメンバーが個人として +α に参加していて、企画によっては自分のサークルを巻き込める — そんな「つながり」の一覧です。</p>
           <p id="circle-count"></p>
         </div>
-        <ul class="circle-tags" id="circle-list"></ul>
+        <ul class="circle-grid" id="circle-list"></ul>
       </div>
     </section>
   </main>
@@ -46,6 +47,7 @@
       <img class="footer-logo" src="../images/logo.png" alt="+α">
       <nav class="footer-nav">
         <a href="../index.html">トップ</a>
+        <a href="../events/index.html">イベント</a>
         <a href="../about/index.html">About</a>
         <a href="index.html">サークル</a>
         <a href="../contact/index.html">お問い合わせ</a>
@@ -68,9 +70,56 @@
 
     const list = document.getElementById("circle-list");
     for (const circle of approvedCircles) {
-      const item = document.createElement("li");
-      item.textContent = circle.name;
-      list.appendChild(item);
+      const li = document.createElement("li");
+      li.className = "circle-card";
+
+      // link があればカード全体をリンクにする。なければただの div
+      const inner = document.createElement(circle.link ? "a" : "div");
+      inner.className = "circle-card-inner";
+      if (circle.link) {
+        inner.href = circle.link;
+        inner.target = "_blank";
+        inner.rel = "noopener";
+      }
+
+      if (circle.photo) {
+        const photoWrap = document.createElement("div");
+        photoWrap.className = "circle-card-photo";
+        const photoImg = document.createElement("img");
+        photoImg.src = circle.photo;
+        photoImg.alt = "";
+        photoWrap.appendChild(photoImg);
+        inner.appendChild(photoWrap);
+      }
+
+      const body = document.createElement("div");
+      body.className = "circle-card-body";
+
+      const header = document.createElement("div");
+      header.className = "circle-card-header";
+
+      if (circle.logo) {
+        const logoImg = document.createElement("img");
+        logoImg.className = "circle-card-logo";
+        logoImg.src = circle.logo;
+        logoImg.alt = "";
+        header.appendChild(logoImg);
+      }
+
+      const name = document.createElement("h3");
+      name.textContent = circle.name;
+      header.appendChild(name);
+      body.appendChild(header);
+
+      if (circle.description) {
+        const desc = document.createElement("p");
+        desc.textContent = circle.description;
+        body.appendChild(desc);
+      }
+
+      inner.appendChild(body);
+      li.appendChild(inner);
+      list.appendChild(li);
     }
   </script>
 </body>
