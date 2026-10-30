@@ -84,7 +84,7 @@ const UPCOMING_EVENTS = [
 const PAST_ACTIVITIES = [
   { date: "10/4", title: "マダミス会", src: "images/event-1004-madamis.jpg", alt: "マダミス会に集まったメンバーの集合写真" },
   { date: "9/25", title: "知らないトランプゲーム会", src: "images/event-0925-card-game.jpg", alt: "知らないトランプゲーム会の様子" },
-  { date: "9/10", title: "アートバー企画 vol.1" },
+  { date: "9/10", title: "アートバー企画 vol.1", src: "images/event-0910-art-bar-2.jpg", alt: "描いた絵を掲げるアートバー企画 vol.1 の参加者" },
   { date: "9/1", title: "LT会", src: "images/event-0901-lt.jpg", alt: "UT LAB でポーズをとるLT会のメンバー" },
   { date: "8/25", title: "うどん会", src: "images/event-0825-udon.jpg", alt: "うどん会で作ったすだち入りのうどん" },
   { date: "8/19", title: "ポケモン会", src: "images/event-0819-pokemon-1.jpg", alt: "ポケモンのぬいぐるみを持って集まったポケモン会の集合写真" },
