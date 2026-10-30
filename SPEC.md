@@ -69,6 +69,7 @@
 - [ ] 公開前: 各サークルに掲載の許可を取る → 2026-08-17 未承諾のまま全件 approved: true になっていたのを発覚、全件 false に修正済み(circles-data.js)。承諾が取れたサークルから該当行を true に切り替えていく
 - [x] サークルのデータを集める → 2026-07-10 名簿から約48件を反映(名前のみのタグ一覧方式。研究室・肩書・役職は除外、企業は掲載)
 - [ ] 陸に戻ったら: 上記「デプロイ」手順を実施(Node.js → wrangler login → 仮デプロイ → ドメイン取得 → カスタムドメイン → Email Routing)→ 2026-10-12 wrangler login・仮デプロイ(workers.dev)・ドメイン取得(Cloudflare Registrar)・Email Routing(contact@utalpha.com→個人アドレスへ転送、送受信テスト済み)まで完了。残りはカスタムドメイン割り当てのみ。転送先メールアドレスが今は個人の手元のものなので、運営メンバーとの会議で正式な宛先を決めてから本番ドメイン切り替え予定
+- [ ] メールを contact@ に戻す → 2026-10-30 サイト公開(utalpha.com / www.utalpha.com、Cloudflare Workers)。メールは Email Routing をやめて Google Workspace の Gmail に切り替え済み(MX は smtp.google.com)。`contact@utalpha.com` は Google グループとして作成したが、受信の確認が取れていない(asobiba@utalpha.com への直接送信は届くが迷惑メールに入る)。それまでの暫定で、contact ページの掲載アドレスを `asobiba@utalpha.com` にしている。やること: ①グループ設定(メンバー・「投稿できるユーザー」に外部)とメールログ検索で contact@ の受信を直す ②届いたら public/contact/index.html を `contact@utalpha.com` に戻して再デプロイ ③DKIM を設定し、迷惑メール扱いを解消する ④運営メンバーとの会議で正式な宛先を決める
 - [ ] GitHub 連携をセットアップ(プライベートリポジトリ+push で自動デプロイ)→ ブラウザから `events-data.js` や写真を編集できるようになる
 - [ ] GitHub 運用を試したうえで、非エンジニアも更新するなら CMS(microCMS / Decap CMS など)の導入を検討。データは events-data.js / circles-data.js の構造をそのまま移植できる
 - [ ] 運営メンバーがウェブ上で自由にサイト運営(記事追加・写真差し替えなど)できる仕組みを検討 → 2026-08-17 案: Decap CMS を `/admin` に組み込み、ブラウザのフォーム操作→裏で GitHub に自動コミット→自動デプロイ。ただし Cloudflare 環境では OAuth 認証の仲介用に小さな Worker が別途必要。GitHub 連携を試した後、実際に運営メンバーに触ってもらって要否を判断する
