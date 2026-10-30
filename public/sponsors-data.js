@@ -3,13 +3,13 @@
 // approved: 掲載の承諾・契約が確定したら true。false のもの、または SPONSORS が空の間はセクションごと非表示になる。
 // 写真・ロゴは先方の正式データ+使用ガイドラインに従うこと。掲載条件(場所・サイズ・期間・リンク)は協賛契約書を確認。
 const SPONSORS = [
-  // 協賛企業への提案用サンプル(自社ロゴ・仮の背景で見せ方を例示。_sample- 接頭辞の画像ともども後で削除する)
   {
-    name: "遊び場株式会社",
-    logo: "images/logo.png",
-    photo: "images/sponsors/_sample-photo.svg",
-    description: "協賛企業様の紹介文がここに入ります。事業内容などを2〜3行で。",
-    url: "#",
+    name: "遠藤真二(ハウスクラフト株式会社 代表取締役社長)",
+    logo: "images/sponsors/sponsor-housecraft-logo.png",
+    photo: "images/sponsors/sponsor-housecraft-photo.jpg",
+    description: "三重県菰野町に本社を置き、愛知・三重・岐阜で自由設計の注文住宅を手がける。地域活性のためのマルシェや子ども向けの講演会など、家づくりの枠を越えた取り組みにも力を入れている。",
+    url: "https://www.house-craft.jp/",
     approved: true,
   },
 ];
+あ

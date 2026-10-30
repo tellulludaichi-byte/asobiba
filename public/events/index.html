@@ -64,10 +64,18 @@
       const figure = document.createElement("figure");
       figure.className = "polaroid";
 
-      const img = document.createElement("img");
-      img.src = "../" + activity.src;
-      img.alt = activity.alt;
-      img.loading = "lazy";
+      if (activity.src) {
+        const img = document.createElement("img");
+        img.src = "../" + activity.src;
+        img.alt = activity.alt;
+        img.loading = "lazy";
+        figure.appendChild(img);
+      } else {
+        const placeholder = document.createElement("div");
+        placeholder.className = "polaroid-placeholder";
+        placeholder.textContent = "写真準備中";
+        figure.appendChild(placeholder);
+      }
 
       const caption = document.createElement("figcaption");
       const date = document.createElement("span");
@@ -75,7 +83,7 @@
       date.textContent = activity.date;
       caption.append(date, activity.title);
 
-      figure.append(img, caption);
+      figure.appendChild(caption);
       activityList.appendChild(figure);
     }
   </script>
