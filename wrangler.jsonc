@@ -7,11 +7,11 @@
     "directory": "./public",
     // /about/index.html ↔ /about/ を自動でそろえる
     "html_handling": "auto-trailing-slash"
-  }
+  },
 
-  // ドメイン取得後に有効化する(utalpha.com をこの Worker に割り当てる):
-  // "routes": [
-  //   { "pattern": "utalpha.com", "custom_domain": true },
-  //   { "pattern": "www.utalpha.com", "custom_domain": true }
-  // ]
+  // utalpha.com / www.utalpha.com をこの Worker に割り当てる
+  "routes": [
+    { "pattern": "utalpha.com", "custom_domain": true },
+    { "pattern": "www.utalpha.com", "custom_domain": true }
+  ]
 }
