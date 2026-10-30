@@ -31,12 +31,12 @@ const UPCOMING_EVENTS = [
 ];
 
 const PAST_ACTIVITIES = [
+  { date: "10/4", title: "マダミス会", src: "images/event-1004-madamis.jpg", alt: "マダミス会に集まったメンバーの集合写真" },
   { date: "9/25", title: "知らないトランプゲーム会", src: "images/event-0925-card-game.jpg", alt: "知らないトランプゲーム会の様子" },
   { date: "9/10", title: "アートバー企画 vol.1", src: "images/event-0910-art-bar.jpg", alt: "アートバー企画 vol.1 の様子" },
-  { date: "9/1", title: "LT会" },
+  { date: "9/1", title: "LT会", src: "images/event-0901-lt.jpg", alt: "UT LAB でポーズをとるLT会のメンバー" },
   { date: "8/25", title: "うどん会", src: "images/event-0825-udon.jpg", alt: "うどん会で作ったすだち入りのうどん" },
   { date: "8/19", title: "ポケモン会", src: "images/event-0819-pokemon-1.jpg", alt: "ポケモンのぬいぐるみを持って集まったポケモン会の集合写真" },
-  { date: "8/19", title: "ポケモン会 UT LAB にて", src: "images/event-0819-pokemon-2.jpg", alt: "UT LAB でポーズをとるポケモン会のメンバー" },
   { date: "7/9", title: "ギャルAIを作る会", src: "images/event-0709-gyaru-ai-2.jpg", alt: "ギャルAIを作る会の集合写真" },
   { date: "7/9", title: "ギャルAIを作る会 発表の様子", src: "images/event-0709-gyaru-ai-1.jpg", alt: "ギャルマインドについて発表するメンバー" },
   { date: "6/21", title: "サッカー観戦会", src: "images/event-0621-soccer-2.jpg", alt: "サッカー観戦会でくつろぐメンバー" },
