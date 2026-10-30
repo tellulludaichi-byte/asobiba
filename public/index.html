@@ -98,17 +98,19 @@
     </div>
   </footer>
 
+  <script src="expire.js"></script>
   <script src="events-data.js"></script>
   <script src="sponsors-data.js"></script>
   <script>
-    // イベント情報(UPCOMING_EVENTS)の描画
+    // イベント情報(UPCOMING_EVENTS)の描画。until の日を過ぎたものは載せない
+    const upcomingEvents = UPCOMING_EVENTS.filter((event) => !isExpired(event.until));
     const eventList = document.getElementById("event-list");
-    if (UPCOMING_EVENTS.length === 0) {
+    if (upcomingEvents.length === 0) {
       const empty = document.createElement("p");
       empty.textContent = "現在告知中のイベントはありません。次の企画をお楽しみに!";
       eventList.appendChild(empty);
     }
-    for (const event of UPCOMING_EVENTS) {
+    for (const event of upcomingEvents) {
       const card = document.createElement("article");
       card.className = "event-card";
 
