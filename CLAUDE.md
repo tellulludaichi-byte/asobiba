@@ -4,10 +4,11 @@
 
 ## 方針
 
-- 静的サイト(フレームワークは未定)
-- ホスティング: Cloudflare Workers
-- デプロイ: wrangler CLI を想定
-- サイト構成・技術スタックは検討中。大きな決定は SPEC.md に追記していく
+- 静的サイト(素の HTML/CSS/JS。フレームワーク・ビルドツールなし)
+- ホスティング: Cloudflare Workers(`utalpha.com` で公開済み)
+- デプロイ: `npx wrangler deploy`(`public/` の中身がそのまま公開される)
+- 大きな決定は SPEC.md に追記していく
+- 公開したくないものは `public/` に置かない(内部資料は `docs/`。git の管理外)。サークル名は承諾が取れたものだけ `circles-data.js` に書く
 
 ## 注意事項
 
